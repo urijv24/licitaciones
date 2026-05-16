@@ -1,39 +1,73 @@
-# Sistema de Gestión de Licitaciones
+# Gestión de Licitaciones
 
-MVP para la gestión y seguimiento de licitaciones comerciales. Permite registrar clientes, productos y licitaciones, controlar el ciclo de vida de cada oportunidad comercial y gestionar usuarios con roles.
+Sistema web para gestionar licitaciones comerciales. Desarrollado como prueba técnica con Next.js, Prisma y PostgreSQL.
 
-## Stack tecnológico
+## Tecnologías usadas
 
-- **Frontend/Backend:** Next.js 16 (App Router + API Routes)
-- **ORM:** Prisma 7
-- **Base de datos:** PostgreSQL
-- **Autenticación:** JWT
-- **Estilos:** Tailwind CSS
+- Next.js 16 con App Router
+- Prisma 7 como ORM
+- PostgreSQL como base de datos
+- JWT para autenticación
+- Tailwind CSS para estilos
 
-## Requisitos previos
+## Requisitos
 
 - Node.js v18 o superior
-- PostgreSQL instalado y corriendo
+- PostgreSQL instalado
 
-## Instalación local
+## Cómo correrlo localmente
 
-### 1. Clonar el repositorio
+1. Clonar el repositorio
 
 ```bash
 git clone https://github.com/urijv24/licitaciones.git
 cd licitaciones
 ```
 
-### 2. Instalar dependencias
+2. Instalar dependencias
 
 ```bash
 npm install
 ```
 
-### 3. Configurar variables de entorno
+3. Crear el archivo `.env` basado en `.env.example` y completar con tus datos
+
+DATABASE_URL="postgresql://postgres:tu_password@localhost:5432/licitaciones?schema=public"
+JWT_SECRET="una_clave_secreta"
+
+4. Crear la base de datos en pgAdmin con el nombre `licitaciones`
+
+5. Aplicar el schema y generar el cliente
 
 ```bash
-cp .env.example .env
+npx prisma db push
+npx prisma generate
 ```
 
-Edita el archivo `.env` con tus datos:
+6. Cargar datos de prueba
+
+```bash
+npm run seed
+```
+
+7. Iniciar el proyecto
+
+```bash
+npm run dev
+```
+
+Abre http://localhost:3000
+
+## Usuarios de prueba
+
+- Admin: admin@empresa.com / admin123
+- Usuario: user@empresa.com / user123
+
+## Variables de entorno necesarias
+
+- `DATABASE_URL` — conexión a PostgreSQL
+- `JWT_SECRET` — clave para firmar los tokens
+
+## Despliegue
+
+https://licitaciones-tqw1.vercel.app

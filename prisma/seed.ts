@@ -95,7 +95,7 @@ async function main() {
     },
   });
 
-  console.log("✅ Seed completado");
+  console.log(" Seed completado");
   console.log("   Admin: admin@empresa.com / admin123");
   console.log("   User:  user@empresa.com  / user123");
 }

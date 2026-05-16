@@ -71,10 +71,6 @@ export default function LoginPage() {
             {loading ? "Iniciando sesión..." : "Iniciar sesión"}
           </button>
         </form>
-
-        <p className="text-xs text-gray-400 text-center mt-6">
-          Admin: admin@empresa.com / admin123
-        </p>
       </div>
     </div>
   );

@@ -56,19 +56,19 @@ export default function ProductosPage() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-gray-600 mb-1 block">Nombre *</label>
-              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
             </div>
             <div>
               <label className="text-xs text-gray-600 mb-1 block">SKU *</label>
-              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.sku} onChange={(e) => setForm({ ...form, sku: e.target.value })} required />
+              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.sku} onChange={(e) => setForm({ ...form, sku: e.target.value })} required />
             </div>
             <div>
               <label className="text-xs text-gray-600 mb-1 block">Precio unitario *</label>
-              <input type="number" step="0.01" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.unitPrice} onChange={(e) => setForm({ ...form, unitPrice: e.target.value })} required />
+              <input type="number" step="0.01" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.unitPrice} onChange={(e) => setForm({ ...form, unitPrice: e.target.value })} required />
             </div>
             <div>
               <label className="text-xs text-gray-600 mb-1 block">Descripción</label>
-              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
             </div>
           </div>
           <div className="flex gap-2">

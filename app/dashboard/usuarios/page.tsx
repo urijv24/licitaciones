@@ -76,19 +76,19 @@ export default function UsuariosPage() {
           {error && <p className="text-red-600 text-sm">{error}</p>}
           <div>
             <label className="text-xs text-gray-600 mb-1 block">Nombre *</label>
-            <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+            <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
           </div>
           <div>
             <label className="text-xs text-gray-600 mb-1 block">Email *</label>
-            <input type="email" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+            <input type="email" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
           </div>
           <div>
             <label className="text-xs text-gray-600 mb-1 block">Contraseña *</label>
-            <input type="password" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required />
+            <input type="password" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required />
           </div>
           <div>
             <label className="text-xs text-gray-600 mb-1 block">Rol *</label>
-            <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })}>
+            <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })}>
               <option value="user">user</option>
               <option value="admin">admin</option>
             </select>

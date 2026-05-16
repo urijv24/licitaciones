@@ -72,26 +72,26 @@ export default function LicitacionesPage() {
           <div className="grid grid-cols-2 gap-3">
             <div className="col-span-2">
               <label className="text-xs text-gray-600 mb-1 block">Título *</label>
-              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
+              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
             </div>
             <div>
               <label className="text-xs text-gray-600 mb-1 block">Cliente *</label>
-              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.clientId} onChange={(e) => setForm({ ...form, clientId: e.target.value })} required>
+              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.clientId} onChange={(e) => setForm({ ...form, clientId: e.target.value })} required>
                 <option value="">Seleccionar...</option>
                 {clientes.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
               </select>
             </div>
             <div>
               <label className="text-xs text-gray-600 mb-1 block">Presupuesto máximo ($) *</label>
-              <input type="number" step="0.01" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.maxBudget} onChange={(e) => setForm({ ...form, maxBudget: e.target.value })} required />
+              <input type="number" step="0.01" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.maxBudget} onChange={(e) => setForm({ ...form, maxBudget: e.target.value })} required />
             </div>
             <div>
               <label className="text-xs text-gray-600 mb-1 block">Fecha límite</label>
-              <input type="date" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.deadline} onChange={(e) => setForm({ ...form, deadline: e.target.value })} />
+              <input type="date" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.deadline} onChange={(e) => setForm({ ...form, deadline: e.target.value })} />
             </div>
             <div>
               <label className="text-xs text-gray-600 mb-1 block">Descripción</label>
-              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
             </div>
           </div>
           <div className="flex gap-2">

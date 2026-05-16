@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  admin
+  user
+}
+
+enum TenderStatus {
+  activa
+  por_cobrar
+  perdida
+  finalizada
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  name         String
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  role         Role      @default(user)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  createdById  Int?      @map("created_by")
+  updatedById  Int?      @map("updated_by")
+
+  tenders      Tender[]
+  clients      Client[]
+  products     Product[]
+
+  @@map("users")
+}
+
+model Client {
+  id          Int       @id @default(autoincrement())
+  name        String
+  email       String    @unique
+  phone       String?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  createdById Int?      @map("created_by")
+  updatedById Int?      @map("updated_by")
+  createdBy   User?     @relation(fields: [createdById], references: [id])
+
+  tenders     Tender[]
+
+  @@map("clients")
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  sku         String    @unique
+  unitPrice   Decimal   @map("unit_price") @db.Decimal(10, 2)
+  description String?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  createdById Int?      @map("created_by")
+  updatedById Int?      @map("updated_by")
+  createdBy   User?     @relation(fields: [createdById], references: [id])
+
+  tenderProducts TenderProduct[]
+
+  @@map("products")
+}
+
+model Tender {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String?
+  status      TenderStatus @default(activa)
+  maxBudget   Decimal      @map("max_budget") @db.Decimal(12, 2)
+  totalAmount Decimal      @default(0) @map("total_amount") @db.Decimal(12, 2)
+  deadline    DateTime?
+  clientId    Int          @map("client_id")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  createdById Int?         @map("created_by")
+  updatedById Int?         @map("updated_by")
+
+  client         Client          @relation(fields: [clientId], references: [id])
+  createdBy      User?           @relation(fields: [createdById], references: [id])
+  tenderProducts TenderProduct[]
+
+  @@map("tenders")
+}
+
+model TenderProduct {
+  id          Int     @id @default(autoincrement())
+  tenderId    Int     @map("tender_id")
+  productId   Int     @map("product_id")
+  quantity    Int
+  unitPrice   Decimal @map("unit_price") @db.Decimal(10, 2)
+
+  tender  Tender  @relation(fields: [tenderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+
+  @@unique([tenderId, productId])
+  @@map("tender_products")
+}
